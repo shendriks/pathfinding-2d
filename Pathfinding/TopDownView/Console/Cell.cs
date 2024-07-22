@@ -2,7 +2,7 @@ namespace BlogCodeExamples.Pathfinding.TopDownView.Console;
 
 public class Cell(int x, int y, bool isWalkable)
 {
-    public Position Position { get; } = new() { X = x, Y = y };
+    public Point Position { get; } = new(x, y);
     public int X => Position.X;
     public int Y => Position.Y;
     public bool IsWalkable { get; } = isWalkable;

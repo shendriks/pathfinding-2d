@@ -4,9 +4,7 @@ public class Grid
 {
     public required Cell[,] Cells { get; init; }
 
-    private Grid()
-    {
-    }
+    private Grid() { }
 
     public static Grid CreateFromArray(int[,] map)
     {
@@ -20,9 +18,17 @@ public class Grid
         return new Grid { Cells = cells };
     }
 
-    public bool TryGetCellAtPosition(Position pos, out Cell cell)
+    /// <summary>
+    /// Try get the cell at the given position
+    /// </summary>
+    /// <param name="pos">The position to get the cell at from the grid</param>
+    /// <param name="cell">The cell at the position if it exists</param>
+    /// <returns>true on success, false on failure</returns>
+    public bool TryGetCellAtPosition(Point pos, out Cell cell)
     {
-        if (pos.X < 0 || pos.Y < 0 || pos.X >= Cells.GetLength(0) || pos.Y >= Cells.GetLength(1)) {
+        if (pos.X < 0 || pos.X >= Cells.GetLength(0) ||
+            pos.Y < 0 || pos.Y >= Cells.GetLength(1)
+           ) {
             cell = new Cell(0, 0, false);
             return false;
         }

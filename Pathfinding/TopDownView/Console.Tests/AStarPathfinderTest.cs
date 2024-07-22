@@ -17,8 +17,8 @@ public class AStarPathfinderTest
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 }
         });
-        var start = new Position(0, 0);
-        var target = new Position(4, 4);
+        var start = new Point(0, 0);
+        var target = new Point(4, 4);
 
         var pathfinder = new AStarPathfinder();
         var path = pathfinder.FindPath(start, target, grid);
@@ -38,8 +38,8 @@ public class AStarPathfinderTest
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 }
         });
-        var start = new Position(-1, 0);
-        var target = new Position(4, 4);
+        var start = new Point(-1, 0);
+        var target = new Point(4, 4);
 
         var pathfinder = new AStarPathfinder();
         var path = pathfinder.FindPath(start, target, grid);
@@ -57,8 +57,8 @@ public class AStarPathfinderTest
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 }
         });
-        var start = new Position(0, 0);
-        var target = new Position(5, 4);
+        var start = new Point(0, 0);
+        var target = new Point(5, 4);
 
         var pathfinder = new AStarPathfinder();
         var path = pathfinder.FindPath(start, target, grid);
@@ -76,8 +76,8 @@ public class AStarPathfinderTest
             { 0, 0, 1, 0, 0 },
             { 0, 0, 1, 0, 0 }
         });
-        var start = new Position(0, 0);
-        var target = new Position(4, 4);
+        var start = new Point(0, 0);
+        var target = new Point(4, 4);
 
         var pathfinder = new AStarPathfinder();
         var path = pathfinder.FindPath(start, target, grid);
@@ -100,8 +100,8 @@ public class AStarPathfinderTest
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
         });
-        var start = new Position(1, 1);
-        var target = new Position(4, 2);
+        var start = new Point(1, 1);
+        var target = new Point(4, 2);
 
         var pathfinder = new AStarPathfinder();
         var path = pathfinder.FindPath(start, target, grid);
@@ -111,7 +111,7 @@ public class AStarPathfinderTest
         Assert.That(path[^1].Position, Is.EqualTo(target));
         Assert.That(
             path.ConvertAll(p => p.Position),
-            Is.EqualTo(new List<Position> {
+            Is.EqualTo(new List<Point> {
                 new(1, 1), new(1, 2), new(1, 3), new(1, 4), new(2, 4), new(3, 4),
                 new(4, 4), new(5, 4), new(6, 4), new(7, 4), new(8, 4), new(8, 3),
                 new(8, 2), new(7, 2), new(6, 2), new(5, 2), new(4, 2)

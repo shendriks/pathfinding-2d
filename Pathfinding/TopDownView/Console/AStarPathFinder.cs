@@ -2,8 +2,9 @@ namespace BlogCodeExamples.Pathfinding.TopDownView.Console;
 
 public class AStarPathfinder
 {
-    public List<Cell> FindPath(Position startPos, Position targetPos, Grid grid)
+    public List<Cell> FindPath(Point startPos, Point targetPos, Grid grid)
     {
+        // If startPos or targetPos is out of bounds, return an empty path
         if (!grid.TryGetCellAtPosition(startPos, out var start)) return [];
         if (!grid.TryGetCellAtPosition(targetPos, out var target)) return [];
 

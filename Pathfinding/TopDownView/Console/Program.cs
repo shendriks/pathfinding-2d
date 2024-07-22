@@ -20,7 +20,7 @@ public static class Program
         var grid = Grid.CreateFromArray(map);
 
         var pathFinder = new AStarPathfinder();
-        var path = pathFinder.FindPath(new Position(1, 1), new Position(4, 2), grid);
+        var path = pathFinder.FindPath(new Point(1, 1), new Point(4, 2), grid);
         if (path.Count == 0) {
             System.Console.WriteLine("No path found!");
             return;

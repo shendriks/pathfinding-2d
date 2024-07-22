@@ -1,6 +1,6 @@
 namespace BlogCodeExamples.Pathfinding.TopDownView.Console;
 
-public struct Position(int x, int y)
+public struct Point(int x, int y)
 {
     public int X = x;
     public int Y = y;
