@@ -1,0 +1,23 @@
+name: Lint
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  run-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+      - name: Super-linter
+        uses: super-linter/super-linter@v6.7.0  # x-release-please-version
+        env:
+          VALIDATE_CSHARP: true
+          DOTNET_CLI_TELEMETRY_OPTOUT: true
+          # To report GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

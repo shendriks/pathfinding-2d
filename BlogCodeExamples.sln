@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pathfinding", "Pathfinding", "{B9BC3A57-4934-4531-8C7B-A06BCF893A82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Pathfinding\TopDownView\Console\Console.csproj", "{1E301E4A-675E-4010-8EC6-EFDE32B7F5B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TopDownView", "TopDownView", "{F8360AC5-928E-4E8B-B5EA-D1ED6A0B3E2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console.Tests", "Pathfinding\TopDownView\Console.Tests\Console.Tests.csproj", "{B42D96F3-3EFF-467D-9CFE-2B9E83CDB3E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E301E4A-675E-4010-8EC6-EFDE32B7F5B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E301E4A-675E-4010-8EC6-EFDE32B7F5B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E301E4A-675E-4010-8EC6-EFDE32B7F5B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E301E4A-675E-4010-8EC6-EFDE32B7F5B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B42D96F3-3EFF-467D-9CFE-2B9E83CDB3E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B42D96F3-3EFF-467D-9CFE-2B9E83CDB3E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B42D96F3-3EFF-467D-9CFE-2B9E83CDB3E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B42D96F3-3EFF-467D-9CFE-2B9E83CDB3E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F8360AC5-928E-4E8B-B5EA-D1ED6A0B3E2D} = {B9BC3A57-4934-4531-8C7B-A06BCF893A82}
+		{1E301E4A-675E-4010-8EC6-EFDE32B7F5B2} = {F8360AC5-928E-4E8B-B5EA-D1ED6A0B3E2D}
+		{B42D96F3-3EFF-467D-9CFE-2B9E83CDB3E8} = {F8360AC5-928E-4E8B-B5EA-D1ED6A0B3E2D}
+	EndGlobalSection
+EndGlobal
