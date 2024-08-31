@@ -18,6 +18,12 @@ public class Grid
         return new Grid { Cells = cells };
     }
 
+    private bool IsInsideBounds(Point position)
+    {
+        var (x, y) = position;
+        return x >= 0 && x < Cells.GetLength(0) && y >= 0 && y < Cells.GetLength(1);
+    }
+
     /// <summary>
     /// Try get the cell at the given position
     /// </summary>
@@ -26,9 +32,7 @@ public class Grid
     /// <returns>true on success, false on failure</returns>
     public bool TryGetCellAtPosition(Point pos, out Cell cell)
     {
-        if (pos.X < 0 || pos.X >= Cells.GetLength(0) ||
-            pos.Y < 0 || pos.Y >= Cells.GetLength(1)
-           ) {
+        if (!IsInsideBounds(pos)) {
             cell = new Cell(0, 0, false);
             return false;
         }

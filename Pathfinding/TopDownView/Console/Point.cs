@@ -9,4 +9,10 @@ public struct Point(int x, int y)
     {
         return $"{nameof(X)}: {X}, {nameof(Y)}: {Y}";
     }
+
+    public void Deconstruct(out int x, out int y)
+    {
+        x = X;
+        y = Y;
+    }
 }

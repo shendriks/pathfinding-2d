@@ -5,4 +5,4 @@
 
 This is a collection of code examples from the blog https://shendriks.dev
 
-* [Basic A* Pathfinding for a simple Top-down Scenario (Console Application)](Pathfinding/TopDownView/Console/README.md)
+* [Basic A* Pathfinding for a simple Top-down Scenario](Pathfinding/TopDownView/README.md)

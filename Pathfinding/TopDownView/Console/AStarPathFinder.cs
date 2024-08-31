@@ -9,6 +9,7 @@ public class AStarPathfinder
         if (!grid.TryGetCellAtPosition(targetPos, out var target)) return [];
 
         start.CostFromStart = 0;
+        start.CostToTarget = GetDistance(start, target);
 
         List<Cell> openSet = [start];
         while (openSet.Count > 0) {
