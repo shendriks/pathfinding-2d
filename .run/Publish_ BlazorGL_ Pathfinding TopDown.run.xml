@@ -1,8 +1,0 @@
-﻿<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Publish: BlazorGL: Pathfinding TopDown" type="DotNetFolderPublish" factoryName="Publish to folder">
-    <riderPublish configuration="Release" delete_existing_files="true" platform="Any CPU" runtime="Portable" self_contained="true" target_folder="$PROJECT_DIR$/Pathfinding/TopDownView/BlazorGL/bin/Release/net8.0/publish" target_framework="net8.0" uuid_high="3476825546263906804" uuid_low="-8251546819072577845" />
-    <method v="2">
-      <option name="Build" default="false" projectName="BlazorGL" projectPath="$PROJECT_DIR$/Pathfinding/TopDownView/BlazorGL/BlazorGL.csproj" />
-    </method>
-  </configuration>
-</component>

@@ -1,0 +1,104 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <RootNamespace>Pathfinding2D.SideView.BlazorGL</RootNamespace>
+    <DefineConstants>$(DefineConstants);BLAZORGL</DefineConstants>
+	<KniPlatform>BlazorGL</KniPlatform>
+	<PackageId>SideView.BlazorGL</PackageId>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Application\Constant.cs" />
+    <Compile Include="Application\FormElement\Button.cs" />
+    <Compile Include="Application\FormElement\Toggle.cs" />
+    <Compile Include="Application\Form\ControlPanel.cs" />
+    <Compile Include="Application\Pathfinding.cs" />
+    <Compile Include="Application\Supportive\Extensions\PointExtension.cs" />
+    <Compile Include="Application\Supportive\Interfaces\IDrawableUpdateable.cs" />
+    <Compile Include="Application\Supportive\Interfaces\IDrawable.cs" />
+    <Compile Include="Application\Supportive\Interfaces\IUpdateable.cs" />
+    <Compile Include="Application\TileMapEditor\GridInputContext.cs" />
+    <Compile Include="Application\TileMapEditor\IContext.cs" />
+    <Compile Include="Application\TileMapEditor\State\BlockClickedState.cs" />
+    <Compile Include="Application\TileMapEditor\State\ButtonReleasedState.cs" />
+    <Compile Include="Application\TileMapEditor\State\CellClickedState.cs" />
+    <Compile Include="Application\TileMapEditor\State\EmptyCellClickedState.cs" />
+    <Compile Include="Application\TileMapEditor\State\HangingBarClickedState.cs" />
+    <Compile Include="Application\TileMapEditor\State\IState.cs" />
+    <Compile Include="Application\TileMapEditor\State\LadderClickedState.cs" />
+    <Compile Include="Application\TileMapEditor\State\StartClickedState.cs" />
+    <Compile Include="Application\TileMapEditor\State\TargetClickedState.cs" />
+    <Compile Include="Application\TileMap\AStarPathFinder.cs" />
+    <Compile Include="Application\TileMap\CellCostPair.cs" />
+    <Compile Include="Application\TileMap\CellType.cs" />
+    <Compile Include="Application\TileMap\GridRenderer.cs" />
+    <Compile Include="Application\TileMap\Cell.cs" />
+    <Compile Include="Application\TileMap\Grid.cs" />
+    <Compile Include="Application\TileMap\Neighbor\INeighborFinder.cs" />
+    <Compile Include="Application\TileMap\Neighbor\NeighborFinder.cs" />
+    <Compile Include="Pages\Index.razor.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="PathfindingGame.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="KNI.Extended" Version="4.0.0" />
+<!--    <PackageReference Include="Microsoft.NET.Sdk.WebAssembly.Pack" Version="8.0.7" />-->
+    <PackageReference Include="nkast.Xna.Framework" Version="3.12.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Content" Version="3.12.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Graphics" Version="3.12.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Audio" Version="3.12.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Media" Version="3.12.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Input" Version="3.12.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Game" Version="3.12.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Blazor" Version="3.12.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Content.Pipeline.Builder" Version="3.12.9001" />
+  </ItemGroup>
+
+<!--  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">-->
+<!--    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.7" />-->
+<!--    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.7" PrivateAssets="all" />-->
+<!--  </ItemGroup>-->
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.7" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <KniContentReference Include="Content\PathfindingContent.mgcb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Fonts\Font1.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\ButtonPlay.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\ButtonReset.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\ButtonStep.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\ButtonStop.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\CellBlock.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\CellEmpty.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\CellHangingBar.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\CellLadder.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\CellStart.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\CellTarget.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\Font1.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\ToggleJumpingOff.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\ToggleJumpingOn.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\ToggleShowParentOff.xnb" />
+    <_ContentIncludedByDefault Remove="wwwroot\Content\Textures\ToggleShowParentOn.xnb" />
+  </ItemGroup>
+
+</Project>
