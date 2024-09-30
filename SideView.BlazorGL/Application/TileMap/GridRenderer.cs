@@ -25,8 +25,8 @@ public class GridRenderer(Grid grid) : IDrawable
         _textureCellBlock = cm.Load<Texture2D>("Textures/CellBlock");
         _textureCellLadder = cm.Load<Texture2D>("Textures/CellLadder");
         _textureCellHangingBar = cm.Load<Texture2D>("Textures/CellHangingBar");
-        _textureCellStart = cm.Load<Texture2D>("Textures/CellStart");
-        _textureCellTarget = cm.Load<Texture2D>("Textures/CellTarget");
+        _textureCellStart = cm.Load<Texture2D>("Textures/CellA");
+        _textureCellTarget = cm.Load<Texture2D>("Textures/CellB");
         _font = cm.Load<SpriteFont>("Fonts/Font1");
     }
 
