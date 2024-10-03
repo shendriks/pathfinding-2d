@@ -56,7 +56,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="KNI.Extended" Version="4.0.0" />
+    <PackageReference Include="KNI.Extended" Version="4.0.3" />
 <!--    <PackageReference Include="Microsoft.NET.Sdk.WebAssembly.Pack" Version="8.0.7" />-->
     <PackageReference Include="nkast.Xna.Framework" Version="3.12.9001" />
     <PackageReference Include="nkast.Xna.Framework.Content" Version="3.12.9001" />
