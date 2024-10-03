@@ -59,7 +59,7 @@
     <PackageReference Include="nkast.Xna.Framework.Input" Version="3.12.9001" />
     <PackageReference Include="nkast.Xna.Framework.Game" Version="3.12.9001" />
     <PackageReference Include="nkast.Xna.Framework.Blazor" Version="3.12.9001" />
-    <PackageReference Include="nkast.Xna.Framework.Content.Pipeline.Builder" Version="3.12.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Content.Pipeline.Builder" Version="3.14.9001" />
   </ItemGroup>
 
 <!--  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">-->
