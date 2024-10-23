@@ -3,18 +3,10 @@ using Microsoft.Xna.Framework;
 
 namespace Pathfinding2D.SideView.BlazorGL.Application.TileMap;
 
-public class Cell(int x, int y, CellType type)
+public class Cell(int x, int y, CellType type, Grid grid)
 {
-    private Grid? _grid;
     private CellType _type = type;
 
-    internal Grid Grid {
-        set {
-            ArgumentNullException.ThrowIfNull(value);
-            if (value[X, Y] != this) throw new ArgumentException("Wrong cell.");
-            _grid = value;
-        }
-    }
     public Point Position { get; } = new(x, y);
     public int X => Position.X;
     public int Y => Position.Y;
@@ -31,7 +23,6 @@ public class Cell(int x, int y, CellType type)
     public float CostToTarget { get; set; } = float.PositiveInfinity;
     public float CostFromStart { get; set; } = float.PositiveInfinity;
     public Cell? Parent { get; set; }
-    public static Cell None { get; } = new(0, 0, CellType.Empty);
     public bool IsEmpty => Type == CellType.Empty;
     public bool IsBlock => Type == CellType.Block;
     public bool IsLadder => Type == CellType.Ladder;
@@ -48,7 +39,7 @@ public class Cell(int x, int y, CellType type)
     public Cell? DownLeft => NeighborAt(-1, 1);
     public Cell? UpRight => NeighborAt(1, -1);
     public Cell? UpLeft => NeighborAt(-1, -1);
-    public Cell? NeighborAt(int deltaX, int deltaY) => _grid?[X + deltaX, Y + deltaY];
+    public Cell? NeighborAt(int deltaX, int deltaY) => grid[X + deltaX, Y + deltaY];
 
     public event Action? CellTypeChanged;
 

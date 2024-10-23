@@ -38,29 +38,19 @@ public class Grid : IEnumerable<Cell>
 
     public event Action? GridChanged;
 
-    private Grid(Cell[,] cells)
-    {
-        _cells = cells;
-        foreach (var cell in this) {
-            cell.Grid = this;
-            cell.CellTypeChanged += () => GridChanged?.Invoke();
-        }
-    }
-
-    public static Grid CreateFromArray(char[,] map)
+    public Grid(char[,] map)
     {
         if (map.Length == 0) {
             throw new ArgumentException("map must contain at least 1 element");
         }
 
-        var cells = new Cell[map.GetLength(1), map.GetLength(0)];
+        _cells = new Cell[map.GetLength(1), map.GetLength(0)];
         for (var y = 0; y < map.GetLength(0); y++) {
             for (var x = 0; x < map.GetLength(1); x++) {
-                cells[x, y] = new Cell(x, y, CellTypeFromChar(map[y, x]));
+                _cells[x, y] = new Cell(x, y, CellTypeFromChar(map[y, x]), this);
+                _cells[x, y].CellTypeChanged += () => GridChanged?.Invoke();
             }
         }
-
-        return new Grid(cells);
     }
 
     private static CellType CellTypeFromChar(char c)
@@ -87,7 +77,7 @@ public class Grid : IEnumerable<Cell>
     public bool TryGetCellAtPosition(Point position, out Cell cell)
     {
         if (!IsInsideBounds(position)) {
-            cell = Cell.None;
+            cell = _cells[0, 0];
             return false;
         }
 

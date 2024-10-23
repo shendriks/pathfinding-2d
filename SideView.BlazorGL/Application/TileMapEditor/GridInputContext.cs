@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input;
 using Pathfinding2D.SideView.BlazorGL.Application.Supportive.Extensions;
@@ -14,7 +15,7 @@ public class GridInputContext(Grid grid) : IContext
     private IState _currentState = new ButtonReleasedState();
 
     public MouseStateExtended MouseState { get; private set; }
-    public Cell CurrentCell { get; private set; } = Cell.None;
+    public Cell CurrentCell { get; private set; } = grid[0, 0] ?? throw new ArgumentException("grid[0, 0] is null");
     public Cell? PreviousCell { get; private set; }
     public Grid Grid { get; } = grid;
 
