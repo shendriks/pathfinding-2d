@@ -17,7 +17,7 @@ public class NeighborFinderTest
         var finder = new NeighborFinder();
         var grid = new Grid(new[,] { { ' ' } });
         var cell = grid[0, 0];
-        
+
         var neighbors = finder.FindNeighbors(cell!, false, GetDistance);
         var cellCostPairs = neighbors.ToArray();
 
