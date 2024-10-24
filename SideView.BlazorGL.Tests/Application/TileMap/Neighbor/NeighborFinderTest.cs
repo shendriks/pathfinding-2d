@@ -15,9 +15,10 @@ public class NeighborFinderTest
     public void TestFindNeighborsReturnsEmptyCollectionIfOnlyOneCell()
     {
         var finder = new NeighborFinder();
-        var cell = new Cell(0, 0, CellType.Empty);
+        var grid = new Grid(new[,] { { ' ' } });
+        var cell = grid[0, 0];
 
-        var neighbors = finder.FindNeighbors(cell, false, GetDistance);
+        var neighbors = finder.FindNeighbors(cell!, false, GetDistance);
         var cellCostPairs = neighbors.ToArray();
 
         Assert.That(cellCostPairs, Is.Empty);
@@ -36,14 +37,14 @@ public class NeighborFinderTest
 
     public static IEnumerable<object> GridNeighborNoJumpingProvider()
     {
-        var grid = Grid.CreateFromArray(new[,] {
+        var grid = new Grid(new[,] {
             { ' ', ' ', ' ' },
             { ' ', ' ', ' ' },
             { ' ', ' ', ' ' }
         });
         yield return new object[] { grid, grid[1, 1]!, new[] { new CellCostPair(grid[1, 2]!, 1) } };
 
-        grid = Grid.CreateFromArray(new[,] {
+        grid = new Grid(new[,] {
             { ' ', ' ', ' ' },
             { ' ', ' ', ' ' },
             { ' ', 'B', ' ' }
@@ -57,7 +58,7 @@ public class NeighborFinderTest
             }
         };
 
-        grid = Grid.CreateFromArray(new[,] {
+        grid = new Grid(new[,] {
             { ' ', 'L', ' ' },
             { ' ', 'L', ' ' },
             { ' ', 'L', ' ' }
@@ -73,7 +74,7 @@ public class NeighborFinderTest
             }
         };
 
-        grid = Grid.CreateFromArray(new[,] {
+        grid = new Grid(new[,] {
             { 'B', 'B', 'B' },
             { 'H', 'H', 'H' },
             { ' ', ' ', ' ' }
@@ -102,7 +103,7 @@ public class NeighborFinderTest
 
     public static IEnumerable<object> GridNeighborProvider()
     {
-        var grid = Grid.CreateFromArray(new[,] {
+        var grid = new Grid(new[,] {
             { ' ', ' ', ' ' , ' ', ' ' },
             { ' ', ' ', 'B' , ' ', ' ' },
             { ' ', ' ', 'B' , ' ', ' ' },
@@ -124,7 +125,7 @@ public class NeighborFinderTest
             }
         };
 
-        grid = Grid.CreateFromArray(new[,] {
+        grid = new Grid(new[,] {
             { ' ', ' ', ' ' , ' ', ' ' },
             { ' ', ' ', 'B' , 'B', 'B' },
             { ' ', ' ', ' ' , ' ', ' ' },
@@ -144,7 +145,7 @@ public class NeighborFinderTest
             }
         };
 
-        grid = Grid.CreateFromArray(new[,] {
+        grid = new Grid(new[,] {
             { ' ', ' ', ' ' , ' ', ' ' },
             { ' ', ' ', ' ' , ' ', ' ' },
             { ' ', ' ', ' ' , ' ', ' ' },

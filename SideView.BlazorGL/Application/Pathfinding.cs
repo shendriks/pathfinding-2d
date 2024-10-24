@@ -42,9 +42,10 @@ public class Pathfinding
 
     public Pathfinding()
     {
-        _grid = Grid.CreateFromArray(_map);
-        _grid.StartPosition = new Point(0, 10);
-        _grid.TargetPosition = new Point(5, 1);
+        _grid = new Grid(_map) {
+            StartPosition = new Point(0, 10),
+            TargetPosition = new Point(5, 1)
+        };
         _grid.GridChanged += Reset;
 
         _gridRenderer = new GridRenderer(_grid);
