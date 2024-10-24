@@ -41,7 +41,7 @@ public class Grid : IEnumerable<Cell>
     public Grid(char[,] map)
     {
         if (map.Length == 0) {
-            throw new ArgumentException("map must contain at least 1 element");
+            throw new ArgumentException($"{nameof(map)} must contain at least 1 element");
         }
 
         _cells = new Cell[map.GetLength(1), map.GetLength(0)];
