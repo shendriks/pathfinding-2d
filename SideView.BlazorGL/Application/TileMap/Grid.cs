@@ -47,7 +47,7 @@ public class Grid : IEnumerable<Cell>
         _cells = new Cell[map.GetLength(1), map.GetLength(0)];
         for (var y = 0; y < map.GetLength(0); y++) {
             for (var x = 0; x < map.GetLength(1); x++) {
-                _cells[x, y] = new Cell(x, y, CellTypeFromChar(map[y, x]), this);
+                _cells[x, y] = new Cell(x, y, CellTypeFromChar(map[y, x]));
                 _cells[x, y].CellTypeChanged += () => GridChanged?.Invoke();
             }
         }

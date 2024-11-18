@@ -50,7 +50,7 @@ public class Pathfinding
 
         _gridRenderer = new GridRenderer(_grid);
         _gridInputContext = new GridInputContext(_grid);
-        _pathFinder = new AStarPathfinder(_grid, new NeighborFinder());
+        _pathFinder = new AStarPathfinder(_grid, new NeighborFinder(new GridNavigator(_grid)));
         _findPathCoroutine = _pathFinder.FindPathCoroutine(_hasJumpCapability);
 
         _controlPanel = new ControlPanel(new Point(0, _map.GetLength(0) * Constant.TileSize));

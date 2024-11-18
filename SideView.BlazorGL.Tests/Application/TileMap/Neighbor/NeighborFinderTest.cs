@@ -14,9 +14,9 @@ public class NeighborFinderTest
     [Test]
     public void TestFindNeighborsReturnsEmptyCollectionIfOnlyOneCell()
     {
-        var finder = new NeighborFinder();
         var grid = new Grid(new[,] { { ' ' } });
         var cell = grid[0, 0];
+        var finder = new NeighborFinder(new GridNavigator(grid));
 
         var neighbors = finder.FindNeighbors(cell!, false, GetDistance);
         var cellCostPairs = neighbors.ToArray();
@@ -27,7 +27,7 @@ public class NeighborFinderTest
     [TestCaseSource(nameof(GridNeighborNoJumpingProvider))]
     public void TestFindNeighborsWithoutJumping(Grid grid, Cell cell, CellCostPair[] expectedCellCostPairs)
     {
-        var finder = new NeighborFinder();
+        var finder = new NeighborFinder(new GridNavigator(grid));
 
         var neighbors = finder.FindNeighbors(cell, false, GetDistance);
         var actualCellCostPairs = neighbors.ToArray();
@@ -93,7 +93,7 @@ public class NeighborFinderTest
     [TestCaseSource(nameof(GridNeighborProvider))]
     public void TestFindNeighborsWithJumping(Grid grid, Cell cell, CellCostPair[] expectedCellCostPairs)
     {
-        var finder = new NeighborFinder();
+        var finder = new NeighborFinder(new GridNavigator(grid));
 
         var neighbors = finder.FindNeighbors(cell, true, GetDistance);
         var actualCellCostPairs = neighbors.ToArray();
