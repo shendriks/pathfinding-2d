@@ -45,6 +45,7 @@
     <Compile Include="Application\TileMap\AStarPathFinder.cs" />
     <Compile Include="Application\TileMap\CellCostPair.cs" />
     <Compile Include="Application\TileMap\CellType.cs" />
+    <Compile Include="Application\TileMap\GridNavigator.cs" />
     <Compile Include="Application\TileMap\GridRenderer.cs" />
     <Compile Include="Application\TileMap\Cell.cs" />
     <Compile Include="Application\TileMap\Grid.cs" />

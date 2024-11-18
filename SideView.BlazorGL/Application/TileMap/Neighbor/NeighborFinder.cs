@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Pathfinding2D.SideView.BlazorGL.Application.TileMap.Neighbor;
 
-public class NeighborFinder : INeighborFinder
+public class NeighborFinder(GridNavigator navigator) : INeighborFinder
 {
     // +-+-+-+-+-+-+
     // |1|2|3|4|5| |
@@ -33,7 +33,7 @@ public class NeighborFinder : INeighborFinder
             yield return cell;
         }
 
-        if (!hasJumpCapability || sourceCell.Down is not { IsBlock: true }) {
+        if (!hasJumpCapability || navigator.StartAt(sourceCell).Down.Cell is not { IsBlock: true }) {
             yield break;
         }
 
@@ -42,44 +42,48 @@ public class NeighborFinder : INeighborFinder
         }
     }
 
-    private static IEnumerable<CellCostPair> FindCellsWithoutJumping(
+    private IEnumerable<CellCostPair> FindCellsWithoutJumping(
         Cell cell,
         INeighborFinder.GetDistanceDelegate dist
     )
     {
-        if (cell.Down is { IsBlock: false }) {
-            var cost = dist(cell, cell.Down);
-            yield return new CellCostPair(cell.Down, cost);
+        var down = navigator.StartAt(cell).Down.Cell; 
+        if (down is { IsBlock: false }) {
+            var cost = dist(cell, down);
+            yield return new CellCostPair(down, cost);
         }
 
-        if (cell is { IsLadder: true, Up.IsBlock: false }) {
-            var cost = dist(cell, cell.Up);
-            yield return new CellCostPair(cell.Up, cost);
+        var up = navigator.StartAt(cell).Up.Cell;
+        if (cell is { IsLadder: true } && up is { IsBlock: false }) {
+            var cost = dist(cell, up);
+            yield return new CellCostPair(up, cost);
         }
 
-        var canMoveSideways = cell.Down is { IsEmpty: false } || cell.IsLadder || cell.IsHangingBar;
+        var canMoveSideways = down is { IsEmpty: false } || cell.IsLadder || cell.IsHangingBar;
         if (!canMoveSideways) yield break;
 
-        if (cell.Right is { IsBlock: false }) {
-            var cost = dist(cell, cell.Right);
-            yield return new CellCostPair(cell.Right, cost);
+        var right = navigator.StartAt(cell).Right.Cell;
+        if (right is { IsBlock: false }) {
+            var cost = dist(cell, right);
+            yield return new CellCostPair(right, cost);
         }
 
-        if (cell.Left is { IsBlock: false }) {
-            var cost = dist(cell, cell.Left);
-            yield return new CellCostPair(cell.Left, cost);
+        var left = navigator.StartAt(cell).Left.Cell;
+        if (left is { IsBlock: false }) {
+            var cost = dist(cell, left);
+            yield return new CellCostPair(left, cost);
         }
     }
 
-    private static IEnumerable<CellCostPair> FindCellsWithJumping(
+    private IEnumerable<CellCostPair> FindCellsWithJumping(
         Cell cell,
         INeighborFinder.GetDistanceDelegate dist
     )
     {
         // If we're ...
-        if (cell.DownRight is { IsEmpty: true }         // a) standing at the edge of a pit, or
-            || cell.Right?.Right is { IsBlock: true }   // b) there is an obstacle, or
-            || cell.Right?.UpRight is { IsBlock: true } // c) there's an elevated platform
+        if (navigator.StartAt(cell).DownRight.Cell is { IsEmpty: true }        // a) standing at the edge of a pit, or
+            || navigator.StartAt(cell).Right.Right.Cell is { IsBlock: true }   // b) there is an obstacle, or
+            || navigator.StartAt(cell).Right.UpRight.Cell is { IsBlock: true } // c) there's an elevated platform
         ) {
             // ... then try jumping to the right
             foreach (var cellCostPair in FindCellsOnJumpPath(cell, dist, JumpRightTrajectoryDeltas)) {
@@ -87,9 +91,9 @@ public class NeighborFinder : INeighborFinder
             }
         }
 
-        if (cell.DownLeft is { IsEmpty: true }
-            || cell.Left?.Left is { IsBlock: true }
-            || cell.Left?.UpLeft is { IsBlock: true }
+        if (navigator.StartAt(cell).DownLeft.Cell is { IsEmpty: true }
+            || navigator.StartAt(cell).Left.Left.Cell is { IsBlock: true }
+            || navigator.StartAt(cell).Left.UpLeft.Cell is { IsBlock: true }
         ) {
             foreach (var cellCostPair in FindCellsOnJumpPath(cell, dist, JumpLeftTrajectoryDeltas)) {
                 yield return cellCostPair;
@@ -97,7 +101,7 @@ public class NeighborFinder : INeighborFinder
         }
     }
 
-    private static IEnumerable<CellCostPair> FindCellsOnJumpPath(
+    private IEnumerable<CellCostPair> FindCellsOnJumpPath(
         Cell cell,
         INeighborFinder.GetDistanceDelegate dist,
         IEnumerable<Point> deltaDirection
@@ -106,7 +110,7 @@ public class NeighborFinder : INeighborFinder
         var cost = 0f;
         var previousCell = cell;
         foreach (var delta in deltaDirection) {
-            var potentialNeighbor = cell.NeighborAt(delta.X, delta.Y);
+            var potentialNeighbor = navigator.StartAt(cell).NeighborAt(delta.X, delta.Y).Cell;
             if (potentialNeighbor is null or { IsBlock: true }) {
                 // If we are outside the grid or there is a block in the path of the jump,
                 // we stop and try the opposite direction.
