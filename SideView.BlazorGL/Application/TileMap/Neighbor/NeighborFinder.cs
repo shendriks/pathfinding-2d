@@ -110,7 +110,7 @@ public class NeighborFinder(GridNavigator navigator) : INeighborFinder
         var cost = 0f;
         var previousCell = cell;
         foreach (var delta in deltaDirection) {
-            var potentialNeighbor = navigator.StartAt(cell).NeighborAt(delta.X, delta.Y).Cell;
+            var potentialNeighbor = navigator.StartAt(cell).MoveBy(delta.X, delta.Y).Cell;
             if (potentialNeighbor is null or { IsBlock: true }) {
                 // If we are outside the grid or there is a block in the path of the jump,
                 // we stop and try the opposite direction.
