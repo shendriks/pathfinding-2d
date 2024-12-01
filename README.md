@@ -21,13 +21,11 @@ In here you'll find the following projects:
 If you compare the applications, you'll notice that all projects have
 similar classes like `Cell`, `Grid` or `AStarPathfinder` with quite a bit of duplicated code.
 
-Duplicated code is generally considered bad practice (
-see [the DRY principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)).
+Duplicated code is generally considered bad practice (see [the DRY principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)).
 However, it seems acceptable in this case because
 
 1. These are separate projects, each with its own set of requirements (e.g. a console application
-   is meant to be called once, while a MonoGame application is meant to be interactive and game-like, e.g. you can step
-   through
+   is meant to be called once, while a MonoGame application is meant to be interactive and game-like, e.g. you can step through
    the algorithm).
 2. Trying to avoid duplicated code by extracting superclasses into a separate project makes the relatively simple
    examples unnecessarily complicated.
@@ -36,12 +34,9 @@ However, it seems acceptable in this case because
 ### About not unsubscribing from Events
 
 In general, it's good practice to unsubscribe from events when you no longer need them.
-In this example, however, we'll skip the step of unsubscribing for simplicity's sake, because it's just one level, if
-you will, and the
-"game" is not progressing in the sense that a new level or area needs to be loaded while the current one is being
-unloaded, or
-new game objects are being created or existing ones are being destroyed. The only time we would need to unsubscribe is
-when the
+In this example, however, we'll skip the step of unsubscribing for simplicity's sake, because it's just one level, if you will, and the
+"game" is not progressing in the sense that a new level or area needs to be loaded while the current one is being unloaded, or
+new game objects are being created or existing ones are being destroyed. The only time we would need to unsubscribe is when the
 whole game ends, in which case everything will end up in data nirvana anyway.
 
 ### Testing
