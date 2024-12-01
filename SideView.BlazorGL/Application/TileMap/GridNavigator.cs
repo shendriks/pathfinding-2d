@@ -12,16 +12,16 @@ public class GridNavigator(Grid grid)
         return this;
     }
     
-    public GridNavigator Up => NeighborAt(0, -1);
-    public GridNavigator Down => NeighborAt(0, 1);
-    public GridNavigator Left => NeighborAt(-1, 0);
-    public GridNavigator Right => NeighborAt(1, 0);
-    public GridNavigator DownRight => NeighborAt(1, 1);
-    public GridNavigator DownLeft => NeighborAt(-1, 1);
-    public GridNavigator UpRight => NeighborAt(1, -1);
-    public GridNavigator UpLeft => NeighborAt(-1, -1);
+    public GridNavigator Up => MoveBy(0, -1);
+    public GridNavigator Down => MoveBy(0, 1);
+    public GridNavigator Left => MoveBy(-1, 0);
+    public GridNavigator Right => MoveBy(1, 0);
+    public GridNavigator DownRight => MoveBy(1, 1);
+    public GridNavigator DownLeft => MoveBy(-1, 1);
+    public GridNavigator UpRight => MoveBy(1, -1);
+    public GridNavigator UpLeft => MoveBy(-1, -1);
 
-    public GridNavigator NeighborAt(int deltaX, int deltaY)
+    public GridNavigator MoveBy(int deltaX, int deltaY)
     {
         _x += deltaX;
         _y += deltaY;
