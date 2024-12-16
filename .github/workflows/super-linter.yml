@@ -15,7 +15,7 @@ jobs:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
       - name: Super-linter
-        uses: super-linter/super-linter@v7.1.0  # x-release-please-version
+        uses: super-linter/super-linter@v7.2.1  # x-release-please-version
         env:
           VALIDATE_CSHARP: true
           DOTNET_CLI_TELEMETRY_OPTOUT: true
