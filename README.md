@@ -1,7 +1,7 @@
 # A* Pathfinding in 2D Games
 
-[![.NET](https://github.com/shendriks/blog-code-examples/actions/workflows/dotnet.yml/badge.svg)](https://github.com/shendriks/blog-code-examples/actions/workflows/dotnet.yml)
-[![Lint](https://github.com/shendriks/blog-code-examples/actions/workflows/super-linter.yml/badge.svg)](https://github.com/shendriks/blog-code-examples/actions/workflows/super-linter.yml)
+[![.NET](https://github.com/shendriks/pathfinding-2d/actions/workflows/dotnet.yml/badge.svg)](https://github.com/shendriks/pathfinding-2d/actions/workflows/dotnet.yml)
+[![Lint](https://github.com/shendriks/pathfinding-2d/actions/workflows/super-linter.yml/badge.svg)](https://github.com/shendriks/pathfinding-2d/actions/workflows/super-linter.yml)
 
 This is a collection of code examples from the blog series https://shendriks.dev/series/a-pathfinding-in-2d-games/
 
