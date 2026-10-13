@@ -12,7 +12,7 @@ In here you'll find the following projects:
 | Part 1: [A* Pathfinding in 2D Games: The Basics for a simple Top-down Scenario](https://shendriks.dev/posts/2024-07-13-a-star-pathfinding-in-2d-games-the-basics-for-top-down-scenarios/) | <ul><li>`TopDownView.Console`</li><li>`TopDownView.Console.Tests`</li></ul>   | `main`           |
 | Part 2: [A* Pathfinding in 2D Games: A simple Top-down Scenario implemented with MonoGame/KNI](https://shendriks.dev/posts/2024-08-24-a-star-pathfinding-top-down-blazorgl/)              | <ul><li>`TopDownView.BlazorGL`</li><li>`TopDownView.BlazorGL.Tests`</li></ul> | `main`           |
 | Part 3: [A* Pathfinding in 2D Games: Side-View](https://shendriks.dev/posts/2024-09-04-a-star-pathfinding-side-view/)                                                                     | <ul><li>`SideView.BlazorGL`</li><li>`SideView.BlazorGL.Tests`</li></ul>       | `main`           |
-| Part 4: [A* Pathfinding in 2D Games: Addendum about Cyclic Dependencies](https://shendriks.dev/posts/2024-12-01-a-star-pathfinding-supplemental/)                                         | <ul><li>`SideView.BlazorGL`</li><li>`SideView.BlazorGL.Tests`</li></ul>       | `grid-navigator` |
+| Part 4: [A* Pathfinding in 2D Games: Addendum about Cyclic Dependencies](https://shendriks.dev/posts/2024-12-01-a-star-pathfinding-supplemental/)                                         | <ul><li>`SideView.GridNavigator.BlazorGL`</li><li>`SideView.GridNavigator.BlazorGL.Tests`</li></ul> | `main`           |
 
 ## A few notes about the implementation
 
@@ -30,6 +30,10 @@ However, it seems acceptable in this case because
 2. Trying to avoid duplicated code by extracting superclasses into a separate project makes the relatively simple
    examples unnecessarily complicated.
 3. The code is unlikely to change.
+
+The exception is `SideView.GridNavigator.BlazorGL`, an alternative implementation of `SideView.BlazorGL` for Part 4.
+It only contains its own versions of the classes that differ (`Cell`, `Grid`, `GridNavigator`, `NeighborFinder`
+and `Pathfinding`) and links all other source files as well as the content from `SideView.BlazorGL`.
 
 ### About not unsubscribing from Events
 
