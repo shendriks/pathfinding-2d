@@ -1,0 +1,85 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <!-- Same root namespace as SideView.BlazorGL, so the linked sources and the Razor components share namespaces -->
+    <RootNamespace>Pathfinding2D.SideView.BlazorGL</RootNamespace>
+    <DefineConstants>$(DefineConstants);BLAZORGL</DefineConstants>
+    <KniPlatform>BlazorGL</KniPlatform>
+    <PackageId>SideView.GridNavigator.BlazorGL</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
+  </PropertyGroup>
+
+  <!-- Classes that differ from SideView.BlazorGL: Cell has no reference to its Grid, GridNavigator walks the grid instead -->
+  <ItemGroup>
+    <Compile Include="Application\Pathfinding.cs" />
+    <Compile Include="Application\TileMap\Cell.cs" />
+    <Compile Include="Application\TileMap\Grid.cs" />
+    <Compile Include="Application\TileMap\GridNavigator.cs" />
+    <Compile Include="Application\TileMap\Neighbor\NeighborFinder.cs" />
+  </ItemGroup>
+
+  <!-- Everything else is shared with SideView.BlazorGL -->
+  <ItemGroup>
+    <Compile Include="..\SideView.BlazorGL\Application\Constant.cs" Link="Application\Constant.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\FormElement\Button.cs" Link="Application\FormElement\Button.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\FormElement\Toggle.cs" Link="Application\FormElement\Toggle.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\Form\ControlPanel.cs" Link="Application\Form\ControlPanel.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\Supportive\Extensions\PointExtension.cs" Link="Application\Supportive\Extensions\PointExtension.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\Supportive\Interfaces\IDrawableUpdateable.cs" Link="Application\Supportive\Interfaces\IDrawableUpdateable.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\Supportive\Interfaces\IDrawable.cs" Link="Application\Supportive\Interfaces\IDrawable.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\Supportive\Interfaces\IUpdateable.cs" Link="Application\Supportive\Interfaces\IUpdateable.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMapEditor\GridInputContext.cs" Link="Application\TileMapEditor\GridInputContext.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMapEditor\IContext.cs" Link="Application\TileMapEditor\IContext.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMapEditor\State\BlockClickedState.cs" Link="Application\TileMapEditor\State\BlockClickedState.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMapEditor\State\ButtonReleasedState.cs" Link="Application\TileMapEditor\State\ButtonReleasedState.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMapEditor\State\CellClickedState.cs" Link="Application\TileMapEditor\State\CellClickedState.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMapEditor\State\EmptyCellClickedState.cs" Link="Application\TileMapEditor\State\EmptyCellClickedState.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMapEditor\State\HangingBarClickedState.cs" Link="Application\TileMapEditor\State\HangingBarClickedState.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMapEditor\State\IState.cs" Link="Application\TileMapEditor\State\IState.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMapEditor\State\LadderClickedState.cs" Link="Application\TileMapEditor\State\LadderClickedState.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMapEditor\State\StartClickedState.cs" Link="Application\TileMapEditor\State\StartClickedState.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMapEditor\State\TargetClickedState.cs" Link="Application\TileMapEditor\State\TargetClickedState.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMap\AStarPathFinder.cs" Link="Application\TileMap\AStarPathFinder.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMap\CellCostPair.cs" Link="Application\TileMap\CellCostPair.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMap\CellType.cs" Link="Application\TileMap\CellType.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMap\GridRenderer.cs" Link="Application\TileMap\GridRenderer.cs" />
+    <Compile Include="..\SideView.BlazorGL\Application\TileMap\Neighbor\INeighborFinder.cs" Link="Application\TileMap\Neighbor\INeighborFinder.cs" />
+    <Compile Include="..\SideView.BlazorGL\Pages\Index.razor.cs" Link="Pages\Index.razor.cs" />
+    <Compile Include="..\SideView.BlazorGL\Program.cs" Link="Program.cs" />
+    <Compile Include="..\SideView.BlazorGL\PathfindingGame.cs" Link="PathfindingGame.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="KNI.Extended" Version="6.1.1" />
+    <PackageReference Include="nkast.Xna.Framework" Version="4.3.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Content" Version="4.3.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Graphics" Version="4.3.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Audio" Version="4.3.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Media" Version="4.3.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Input" Version="4.3.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Game" Version="4.3.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Devices" Version="4.3.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Storage" Version="4.3.9001" />
+    <PackageReference Include="nkast.Xna.Framework.XR" Version="4.3.9001" />
+    <PackageReference Include="nkast.Kni.Platform.Blazor.GL" Version="4.3.9001" />
+    <PackageReference Include="nkast.Xna.Framework.Content.Pipeline.Builder" Version="4.3.9001" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net10.0' ">
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.13" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- Content (textures, font) is shared with SideView.BlazorGL; the built .xnb files land in this project's wwwroot/Content -->
+  <ItemGroup>
+    <KniContentReference Include="..\SideView.BlazorGL\Content\PathfindingContent.mgcb" ContentFolder="Content" />
+  </ItemGroup>
+
+</Project>
